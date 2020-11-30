@@ -26,6 +26,30 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| helm | n/a |
+| random | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| elasticsearch\_values\_file\_path | Path to values file to apply to elasticsearch helm chart | `string` | `""` | no |
+| filebeat\_values\_file\_path | Path to values file to apply to filebeat helm chart | `string` | `""` | no |
+| kibana\_values\_file\_path | Path to values file to apply to kibana helm chart | `string` | `""` | no |
+| logstash\_values\_file\_path | Path to values file to apply to logstash helm chart | `string` | `""` | no |
+
+## Outputs
+
+No output.
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Testing
