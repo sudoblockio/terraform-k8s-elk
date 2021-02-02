@@ -1,7 +1,7 @@
 # terraform-k8s-elk
 
-[![open-issues](https://img.shields.io/github/issues-raw/insight-infrastructure/terraform-k8s-elk?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-elk/issues)
-[![open-pr](https://img.shields.io/github/issues-pr-raw/insight-infrastructure/terraform-k8s-elk?style=for-the-badge)](https://github.com/shinyfoil/terraform-k8s-elk/pulls)
+[![open-issues](https://img.shields.io/github/issues-raw/geometry-labs/terraform-k8s-elk?style=for-the-badge)](https://github.com/geometry-labs/terraform-k8s-elk/issues)
+[![open-pr](https://img.shields.io/github/issues-pr-raw/geometry-labs/terraform-k8s-elk?style=for-the-badge)](https://github.com/geometry-labs/terraform-k8s-elk/pulls)
 
 ## Features
 
@@ -15,12 +15,12 @@ For Terraform v0.12.0+
 
 ```hcl
 module "this" {
-  source = "github.com/insight-infrastructure/terraform-k8s-elk"
+  source = "github.com/geometry-labs/terraform-k8s-elk"
 }
 ```
 ## Examples
 
-- [defaults](https://github.com/insight-infrastructure/terraform-k8s-elk/tree/master/examples/defaults)
+- [defaults](https://github.com/geometry-labs/terraform-k8s-elk/tree/master/examples/defaults)
 
 ## Known  Issues
 No issue is creating limit on this module.
@@ -63,11 +63,7 @@ To run them:
 
 ## Authors
 
-Module managed by [Richard Mah](https://github.com/shinyfoil)
-
-## Credits
-
-- [Anton Babenko](https://github.com/antonbabenko)
+Module managed by [Richard Mah](https://github.com/shinyfoil) at [Geometry Labs](https://github.com/geometry-labs).
 
 ## License
 
