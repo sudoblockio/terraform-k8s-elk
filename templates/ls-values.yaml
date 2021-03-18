@@ -1,0 +1,24 @@
+logstashConfig:
+  logstash.yml: |
+    http.host: 0.0.0.0
+    xpack.monitoring.enabled: false
+
+logstashPipeline:
+
+ingress:
+  enabled: true
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host: ls.${domain_name}
+      paths:
+        - path: /logs
+          servicePort: 8080
+  tls:
+    - secretName: logstash-tls
+      hosts:
+        - ls.${domain_name}

@@ -1,0 +1,56 @@
+filebeatConfig:
+  filebeat.yml: |-
+    filebeat.config:
+      inputs:
+        - type: docker
+          containers.ids:
+            - "*"
+          processors:
+            - add_kubernetes_metadata:
+                labels.dedot: true
+                annotations.dedot: true
+                in_cluster: true
+            - drop_event:
+                when:
+                  contains:
+                    kubernetes.pod.name: "ingress-nginx"
+          exclude_lines:
+            - kube-probe
+
+    filebeat.modules:
+    - module: nginx
+
+    filebeat.autodiscover:
+      providers:
+        - type: kubernetes
+          templates:
+            - condition:
+                contains:
+                  kubernetes.pod.name: "ingress-nginx"
+              config:
+              - module: nginx
+                access:
+                  enabled: true
+                  input:
+                    type: container
+                    paths:
+                    - /var/lib/docker/containers/${data.kubernetes.container.id}/*.log
+            - condition:
+                contains:
+                  kubernetes.pod.name: "api"
+              config:
+              - type: container
+                stream: stdout
+                paths:
+                  - "/var/log/containers/*.log"
+
+    processors:
+      - add_cloud_metadata:
+      - add_host_metadata:
+
+    fields:
+      logtype: kubernetes
+    fields_under_root: true
+
+    output.elasticsearch:
+      hosts: ["elasticsearch-master:9200"]
